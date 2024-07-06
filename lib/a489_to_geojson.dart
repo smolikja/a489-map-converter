@@ -1,3 +1,3 @@
-int calculate() {
-  return 6 * 7;
+void convert() {
+  // TODO: convert a480 data to geoJson
 }
