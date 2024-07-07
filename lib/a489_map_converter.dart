@@ -1,10 +1,37 @@
 import 'package:a489_map_converter/a489_model.dart';
+import 'package:a489_map_converter/geojson_model.dart';
 import 'package:xml/xml.dart' as xml;
 
-void convertToGeoJSON(Map<String, dynamic> a489) {
+// MARK: - convertToGeoJSON
+Map<String, dynamic> convertToGeoJSON(Map<String, dynamic> a489) {
   final a489Object = A489Model.fromJson(a489);
+
+  final geoPoints = <PointGeojsonModel>[];
+
+  for (final location in a489Object.locations) {
+    final lat = double.tryParse(location.latitude) ?? 0;
+    final lon = double.tryParse(location.longitude) ?? 0;
+
+    geoPoints.add(
+      PointGeojsonModel(
+        geometry: GeometryPointGeojsonModel(coordinates: [lon, lat]),
+        properties: PropertiesPointGeojsonModel(
+          name: location.title,
+          perex: location.perex,
+          body: location.body,
+          id: location.id.toString(),
+          locationId: location.locationId,
+          url: location.url,
+          image: location.image,
+        ),
+      ),
+    );
+  }
+
+  return GeojsonModel(points: geoPoints).toJson();
 }
 
+// MARK: - convertToGPX
 xml.XmlElement convertToGPX(Map<String, dynamic> a489) {
   final a489Object = A489Model.fromJson(a489);
 
@@ -50,7 +77,7 @@ xml.XmlElement convertToGPX(Map<String, dynamic> a489) {
               ..element('name', nest: location.title)
               ..element('perex', nest: location.perex)
               ..element('body', nest: location.body)
-              ..element('id', nest: location.id)
+              ..element('id', nest: location.id.toString())
               ..element('locationId', nest: location.locationId)
               ..element('url', nest: location.url)
               ..element('image', nest: location.image);

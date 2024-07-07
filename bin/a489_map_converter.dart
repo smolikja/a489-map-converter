@@ -33,7 +33,11 @@ void main(List<String> arguments) async {
   // convert a489
   if (isGeoJSON) {
     try {
-      a489_converter.convertToGeoJSON(a489);
+      final geoJson = a489_converter.convertToGeoJSON(a489);
+      await _export(
+        fileName: 'a489.json',
+        data: json.encode(geoJson),
+      );
     } catch (e) {
       rethrow;
     }
