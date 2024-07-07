@@ -1,4 +1,4 @@
-# a489-to-geojson
+# a489-map-converter
 
 ## build runner
 
