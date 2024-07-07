@@ -27,7 +27,7 @@ void main(List<String> arguments) async {
   }
   final fileName = argResults.rest.first;
 
-  // MARK: - load a489 json
+  // MARK: - load a489 JSON
   final a489 = await _loadA489(fileName: fileName);
 
   // convert a489
