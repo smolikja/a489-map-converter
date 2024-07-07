@@ -1,4 +1,4 @@
-import 'package:a489_to_geojson/a489_to_geojson.dart';
+import 'package:a489_map_converter/a489_map_converter.dart';
 import 'package:test/test.dart';
 
 void main() {
