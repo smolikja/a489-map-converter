@@ -39,7 +39,11 @@ void main(List<String> arguments) async {
     }
   } else if (isGpx) {
     try {
-      a489_converter.convertToGPX(a489);
+      final gpx = a489_converter.convertToGPX(a489);
+      await _export(
+        fileName: 'a489.gpx',
+        data: gpx.toXmlString(pretty: true, indent: '  '),
+      );
     } catch (e) {
       rethrow;
     }
@@ -61,4 +65,16 @@ Future<Map<String, dynamic>> _loadA489({required fileName}) async {
   final a489File = File(a489Path);
   final a489 = await a489File.readAsString().then(json.decode);
   return a489;
+}
+
+Future<void> _export({required String fileName, required String data}) async {
+  // current dir
+  final currentDir = Directory.current.path;
+
+  // path for the export
+  final exportPath = path.join(currentDir, 'output', fileName);
+
+  // export file
+  final export = File(exportPath);
+  await export.writeAsString(data);
 }
