@@ -44,10 +44,10 @@ class A489ModelLocation {
   final String body;
   final List<String> images;
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   late final String longitude;
+  @JsonKey(includeFromJson: false, includeToJson: false)
   late final String latitude;
-
-  Map<String, dynamic> toJson() => _$A489ModelLocationToJson(this);
 
   void _setLatLng() {
     const splitChar = ',';

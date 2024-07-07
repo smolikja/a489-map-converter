@@ -28,9 +28,7 @@ A489ModelLocation _$A489ModelLocationFromJson(Map<String, dynamic> json) =>
       body: json['body'] as String,
       images:
           (json['images'] as List<dynamic>).map((e) => e as String).toList(),
-    )
-      ..longitude = json['longitude'] as String
-      ..latitude = json['latitude'] as String;
+    );
 
 Map<String, dynamic> _$A489ModelLocationToJson(A489ModelLocation instance) =>
     <String, dynamic>{
@@ -43,6 +41,4 @@ Map<String, dynamic> _$A489ModelLocationToJson(A489ModelLocation instance) =>
       'image': instance.image,
       'body': instance.body,
       'images': instance.images,
-      'longitude': instance.longitude,
-      'latitude': instance.latitude,
     };
