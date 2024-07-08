@@ -2,7 +2,7 @@
 
 This **a489-map-converter** converts file including geo location points collected by [A489](https://www.a489.cz/) to files formated as **GeoJSON** and **GPX**. These output files can be easily imported to [Google Maps](https://www.google.com/maps), [Mapy.cz](https://en.mapy.cz/) or any other navigation application of your choice supporting **GeoJSON** or **GPX** import.
 
-You don't need to run this script, output GeoJSON and GPX files are available to download in Releases and in `/output` directory.
+You don't need to run this script, output GeoJSON and GPX files are available to download in [Releases](https://github.com/smolikja/a489-map-converter/releases) and in `/output` directory.
 
 ## Prerequisites for running the a489-map-converter
 
