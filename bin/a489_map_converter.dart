@@ -76,7 +76,7 @@ Future<void> _export({required String extension, required String data}) async {
   // current dir
   final currentDir = Directory.current.path;
 
-  final fileName = 'a489${extension}_${DateTime.now().toIso8601String()}';
+  final fileName = 'a489_${DateTime.now().toIso8601String()}$extension';
 
   // path for the export
   final exportPath = path.join(currentDir, 'output', fileName);
