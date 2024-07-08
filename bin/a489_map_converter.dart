@@ -35,7 +35,7 @@ void main(List<String> arguments) async {
     try {
       final geoJson = a489_converter.convertToGeoJSON(a489);
       await _export(
-        fileName: 'a489.json',
+        extension: '.json',
         data: json.encode(geoJson),
       );
     } catch (e) {
@@ -45,7 +45,7 @@ void main(List<String> arguments) async {
     try {
       final gpx = a489_converter.convertToGPX(a489);
       await _export(
-        fileName: 'a489.gpx',
+        extension: '.gpx',
         data: gpx.toXmlString(pretty: true, indent: '  '),
       );
     } catch (e) {
@@ -71,9 +71,11 @@ Future<Map<String, dynamic>> _loadA489({required fileName}) async {
   return a489;
 }
 
-Future<void> _export({required String fileName, required String data}) async {
+Future<void> _export({required String extension, required String data}) async {
   // current dir
   final currentDir = Directory.current.path;
+
+  final fileName = 'a489${extension}_${DateTime.now().toIso8601String()}';
 
   // path for the export
   final exportPath = path.join(currentDir, 'output', fileName);
