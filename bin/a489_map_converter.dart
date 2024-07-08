@@ -41,7 +41,8 @@ void main(List<String> arguments) async {
     } catch (e) {
       rethrow;
     }
-  } else if (isGpx) {
+  }
+  if (isGpx) {
     try {
       final gpx = a489_converter.convertToGPX(a489);
       await _export(
